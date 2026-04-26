@@ -322,7 +322,37 @@ def filter_stock_availability(qs, _, value, channel_slug):
 
 
 def filter_search(qs, _, value):
-    return prefix_search(qs, value)
+    if not value:
+        return prefix_search(qs, value)
+
+    from django.contrib.postgres.search import SearchQuery, SearchRank
+    from django.db.models import Exists, F, OuterRef, Q, Value
+
+    from ....core.search import parse_search_query
+    from ....core.utils.text import strip_accents
+    from ....product.models import ProductTranslation
+
+    stripped = strip_accents(value)
+    parsed_query = parse_search_query(stripped)
+
+    if not parsed_query:
+        return qs.annotate(search_rank=Value(0)).none()
+
+    prefix_query = SearchQuery(parsed_query, search_type="raw", config="simple")
+    exact_query = SearchQuery(value, search_type="websearch", config="simple")
+
+    translation_match = ProductTranslation.objects.using(qs.db).filter(
+        product_id=OuterRef("pk"),
+        name__icontains=value,
+    )
+
+    return qs.filter(
+        Q(search_vector=prefix_query) | Q(Exists(translation_match))
+    ).annotate(
+        prefix_rank=SearchRank(F("search_vector"), prefix_query),
+        exact_rank=SearchRank(F("search_vector"), exact_query),
+        search_rank=F("exact_rank") * 2 + F("prefix_rank"),
+    )
 
 
 def filter_gift_card(qs, _, value):
