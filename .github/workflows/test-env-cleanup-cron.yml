@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Get branches from open PRs with "test deployment" label and slugify
         id: get-branches-and-slugify
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             // 1. Get all open PRs - pagination is needed or otherwise we would retrieve only first 30
