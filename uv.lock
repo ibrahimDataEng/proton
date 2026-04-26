@@ -921,7 +921,7 @@ wheels = [
 
 [[package]]
 name = "google-cloud-pubsub"
-version = "2.31.1"
+version = "2.37.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "google-api-core", extra = ["grpc"], marker = "platform_python_implementation != 'PyPy'" },
@@ -934,9 +934,9 @@ dependencies = [
     { name = "proto-plus", marker = "platform_python_implementation != 'PyPy'" },
     { name = "protobuf", marker = "platform_python_implementation != 'PyPy'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9a/5a/6142bc0754cb6f3ed330d58a28e07810539dcab23662be932a532e3f249b/google_cloud_pubsub-2.31.1.tar.gz", hash = "sha256:f4214f692da435afcdfb41e77cfa962238db96e4a4ba64637aaa710442d9c532", size = 391409, upload-time = "2025-07-28T21:18:37.244Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/50/89/558c48382d6875335ea6cd7f6409acfbf256b9f7fbc2ad1c19976aabdb1f/google_cloud_pubsub-2.37.0.tar.gz", hash = "sha256:7c5ba9beb5236e2b83c091dd6171423dc7d6d0e989391bd09f60dbd242b29f10", size = 403391, upload-time = "2026-04-10T00:41:17.799Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/25/96/b96c03726126c71b5b7526176feb3114db3323550ab5d1b6d43673378bbc/google_cloud_pubsub-2.31.1-py3-none-any.whl", hash = "sha256:85e9ee330874d725dacf20d65efd52e5ec04141ca04f023d135b961a68b372b0", size = 319167, upload-time = "2025-07-28T21:18:35.412Z" },
+    { url = "https://files.pythonhosted.org/packages/64/f1/bb7162ec50971b1d252e6837d05f64f185d5cfe4e08de8f706e363c305d9/google_cloud_pubsub-2.37.0-py3-none-any.whl", hash = "sha256:dd912422cf66e4ffb423b0d5391ca81bdfa408eb0f21f57adecdb6fb3b1e0bb1", size = 325136, upload-time = "2026-04-10T00:41:01.391Z" },
 ]
 
 [[package]]
@@ -2652,7 +2652,7 @@ requires-dist = [
     { name = "django-storages", extras = ["google"], specifier = "~=1.11" },
     { name = "django-stubs-ext", specifier = ">=5.1.3,<6" },
     { name = "faker", specifier = ">=26.0.0,<27.0" },
-    { name = "google-cloud-pubsub", specifier = ">=1.7,<3.0" },
+    { name = "google-cloud-pubsub", specifier = ">=2.37.0,<3.0" },
     { name = "google-cloud-storage", specifier = ">=2.0.0,<3" },
     { name = "google-i18n-address", specifier = ">=3.1.0,<4" },
     { name = "graphene", specifier = "<3.0" },
